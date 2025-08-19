@@ -3,7 +3,7 @@ import { Routes } from "@angular/router";
 import { CartaCenterComponent } from "../cartas/carta-center/carta-center.component";
 import { CartaCreateComponent } from "../cartas/carta-create/carta-create.component";
 // import { CartaUpdateComponent } from "../cartas/carta-update/carta-update.component";
-// import { CartaListComponent } from "../cartas/carta-list/carta-list.component";
+import { CartaListComponent } from "../cartas/carta-list/carta-list.component";
 
 export const CARTA_ROUTES: Routes = [
     {
@@ -12,7 +12,7 @@ export const CARTA_ROUTES: Routes = [
         children: [
             { path: 'create', component: CartaCreateComponent },
             // { path: ':id', component: CartaUpdateComponent },
-            // { path: '', component: CartaListComponent },
+            { path: '', component: CartaListComponent },
         ]        
     }
 ];
