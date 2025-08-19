@@ -61,6 +61,26 @@ export class NavBarComponent implements OnInit {
               },
           ]
       },
+      {
+          label: 'Cartas',
+          icon: 'pi pi-envelope',
+          items: [
+              {
+                  label: 'Crear',
+                  icon: 'pi pi-plus-circle',
+                  command: () => {
+                    this.router.navigate(["/cartas/create"]);
+                  }
+              },
+              // {
+              //     label: 'Listar',
+              //     icon: 'pi pi-list',
+              //     command: () => {
+              //       this.router.navigate(["/cartas/"]);
+              //     }
+              // },
+          ]
+      },
     ];
   }
 }

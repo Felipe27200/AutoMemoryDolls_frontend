@@ -9,5 +9,9 @@ export const routes: Routes = [
         path: 'dolls',
         loadChildren: () => import('./routes/doll.routes').then(m => m.DOLL_ROUTES)
     },
+    { 
+        path: 'cartas',
+        loadChildren: () => import('./routes/carta.routes').then(m => m.CARTA_ROUTES)
+    },
     { path: '', redirectTo: 'clientes', pathMatch: 'full' }
 ];

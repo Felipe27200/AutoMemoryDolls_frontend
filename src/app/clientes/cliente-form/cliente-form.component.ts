@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
   templateUrl: './cliente-form.component.html',
   styleUrl: './cliente-form.component.css'
 })
-export class ClienteFormComponent {
+export class ClienteFormComponent implements OnChanges {
   @Input() titulo: string = '';
   @Input() cliente: any;
 
@@ -59,7 +59,7 @@ export class ClienteFormComponent {
     this.eventEmitter.emit(formData);
   }
 
-    ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(changes: SimpleChanges): void {
     if (changes["cliente"] === null || changes["cliente"] === undefined 
       || changes["cliente"].currentValue === null || changes["cliente"].currentValue === undefined)
     {

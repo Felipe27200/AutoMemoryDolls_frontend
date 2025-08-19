@@ -1,0 +1,40 @@
+import { inject, Injectable } from '@angular/core';
+
+import { HttpClient, HttpHeaders, } from '@angular/common/http';
+
+import { environment } from '../../environments/environment.development';
+import { catchError } from 'rxjs';
+
+import { ErrorHandlerService } from './error-handler.service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CartaEstadoService {
+  private basePath = environment.apiUrl + "/api/carta-estados";
+  
+  private http: HttpClient = inject(HttpClient);
+  private errorHandler: ErrorHandlerService = inject(ErrorHandlerService);
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
+  
+  constructor() { }
+
+  getAll()
+  {
+    let url = this.basePath + "/";
+
+    return this.http.get<any>(url, this.httpOptions)
+      .pipe(catchError(this.errorHandler.handleError));
+  }
+
+  getById(id: number)
+  {
+    let url = this.basePath;
+
+    return this.http.get<any>(`${url}/${id}`, this.httpOptions)
+      .pipe(catchError(this.errorHandler.handleError));
+  }
+}

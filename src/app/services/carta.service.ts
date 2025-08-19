@@ -10,8 +10,8 @@ import { ErrorHandlerService } from './error-handler.service';
 @Injectable({
   providedIn: 'root'
 })
-export class DollService {
-  private basePath = environment.apiUrl + "/api/auto-memory-dolls";
+export class CartaService {
+  private basePath = environment.apiUrl + "/api/cartas";
   
   private http: HttpClient = inject(HttpClient);
   private errorHandler: ErrorHandlerService = inject(ErrorHandlerService);
@@ -22,33 +22,25 @@ export class DollService {
   
   constructor() { }
 
-  createDoll(Doll: any)
+  createCarta(Carta: any)
   {
     let url = this.basePath + "/";
 
-    return this.http.post<any>(url, Doll, this.httpOptions)
+    return this.http.post<any>(url, Carta, this.httpOptions)
       .pipe(catchError(this.errorHandler.handleError));
   }
 
-  updateDoll(Doll: any, id: number)
+  updateCarta(Carta: any, id: number)
   {
     let url = this.basePath + "/" + (+id);
 
-    return this.http.put<any>(url, Doll, this.httpOptions)
+    return this.http.put<any>(url, Carta, this.httpOptions)
       .pipe(catchError(this.errorHandler.handleError));
   }
 
   getAll()
   {
     let url = this.basePath + "/";
-
-    return this.http.get<any>(url, this.httpOptions)
-      .pipe(catchError(this.errorHandler.handleError));
-  }
-
-  getDisponibles()
-  {
-    let url = this.basePath + "/dolls-disponibles";
 
     return this.http.get<any>(url, this.httpOptions)
       .pipe(catchError(this.errorHandler.handleError));
@@ -69,13 +61,4 @@ export class DollService {
     return this.http.delete<any>(`${url}/${id}`, this.httpOptions)
       .pipe(catchError(this.errorHandler.handleError));
   }
-
-  cambiarEstado(product: any)
-  {
-    let url = this.basePath;
-
-    return this.http.put<any>(`${url}/cambiar-estado/${product.id}`, product, this.httpOptions)
-      .pipe(catchError(this.errorHandler.handleError));
-  }
-
 }

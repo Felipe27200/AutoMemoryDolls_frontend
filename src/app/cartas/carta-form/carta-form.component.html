@@ -1,0 +1,90 @@
+<div class="flex justify-center mt-7">
+    <div class="md:w-3/4 lg:w-2/6">
+      <p-card>
+        <ng-template pTemplate="header">
+          <div class="flex justify-center">
+            <div class="flex mt-2">
+                <p class="font-bold text-2xl">
+                  <span class="font-bold text-2xl pi pi-file-edit mr-1"></span> 
+                  {{ titulo }} Carta
+                </p>
+            </div>
+          </div>     
+        </ng-template>
+        
+        <form [formGroup]="cartaForm" (ngSubmit)="onSubmit()">
+            <div class="field">
+                <label for="motivo">Motivo:</label>
+                <input pInputText id="motivo" formControlName="motivo" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border rounded-sm appearance-none outline-none focus:border-primary w-full mb-4">
+            </div>
+
+            <div class="field">
+                <label for="contenido">Contenido:</label>
+                <textarea pTextarea rows="2" formControlName="contenido" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border rounded-sm appearance-none outline-none focus:border-primary w-full mb-4"></textarea>
+            </div>
+
+            <div class="field">
+                <label for="contenido">Clientes:</label>
+                <p-select 
+                    formControlName="clienteId" 
+                    [options]="clientes" 
+                    optionLabel="nombre"
+                    optionValue="id"
+                    placeholder="Seleccione un cliente..." 
+                    size="small"
+                    class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border rounded-sm appearance-none outline-none focus:border-primary w-full mb-4" 
+                />
+            </div>
+
+            <div class="field">
+                <label for="dolls">Dolls:</label>
+                <p-select 
+                    formControlName="autoMemoryDollId" 
+                    [options]="dolls" 
+                    optionLabel="nombre"
+                    optionValue="id"
+                    placeholder="Seleccione una Doll..." 
+                    size="small"
+                    class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border rounded-sm appearance-none outline-none focus:border-primary w-full mb-4" 
+                />
+            </div>
+
+            <div class="field">
+                <label for="dolls">Estados Carta:</label>
+                <p-select 
+                    formControlName="cartaEstadoId" 
+                    [options]="cartaEstados" 
+                    optionLabel="nombre"
+                    optionValue="id"
+                    placeholder="Estado carta..." 
+                    size="small"
+                    class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border rounded-sm appearance-none outline-none focus:border-primary w-full mb-4" 
+                />
+            </div>
+
+            @for (error of errors; track error) {
+              <p class="text-sm text-red-500 font-semibold">* {{ error }}</p>
+            }
+    
+            <p-button 
+              type="submit" 
+              label="{{ titulo }} Carta" 
+              styleClass="w-full mb-2 mt-7"
+              [icon]=""
+              [disabled]="!cartaForm.valid"
+              size="small"
+            ></p-button>
+            <p-button 
+              type="button" 
+              label="Volver" 
+              severity="secondary"
+              styleClass="w-full" 
+              icon="pi pi-chevron-left"
+              (onClick)="regresarCartas()"
+              size="small"
+            >
+          </p-button>
+        </form>
+      </p-card>
+    </div>
+  </div>
