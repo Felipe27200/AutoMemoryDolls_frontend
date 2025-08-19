@@ -1,1 +1,51 @@
-<p>doll-form works!</p>
+<div class="flex justify-center mt-7">
+    <div class="md:w-3/4 lg:w-2/6">
+      <p-card>
+        <ng-template pTemplate="header">
+          <div class="flex justify-center">
+            <div class="flex mt-2">
+                <p class="font-bold text-2xl">
+                  <span class="font-bold text-2xl pi pi-file-edit mr-1"></span> 
+                  {{ titulo }} Doll
+                </p>
+            </div>
+          </div>     
+        </ng-template>
+        
+        <form [formGroup]="dollForm" (ngSubmit)="onSubmit()">
+            <div class="field">
+                <label for="name">Nombre:</label>
+                <input pInputText id="name" formControlName="nombre" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border rounded-sm appearance-none outline-none focus:border-primary w-full mb-4">
+            </div>
+
+            <div class="field">
+                <label for="edad">edad:</label>
+                <input pInputText id="edad" formControlName="edad" type="number" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border rounded-sm appearance-none outline-none focus:border-primary w-full mb-4">
+            </div>
+
+            @for (error of errors; track error) {
+              <p class="text-sm text-red-500 font-semibold">* {{ error }}</p>
+            }
+    
+            <p-button 
+              type="submit" 
+              label="{{ titulo }} Doll" 
+              styleClass="w-full mb-2 mt-7"
+              [icon]=""
+              [disabled]="!dollForm.valid"
+              size="small"
+            ></p-button>
+            <p-button 
+              type="button" 
+              label="Volver" 
+              severity="secondary"
+              styleClass="w-full" 
+              icon="pi pi-chevron-left"
+              (onClick)="regresarDolls()"
+              size="small"
+            >
+          </p-button>
+        </form>
+      </p-card>
+    </div>
+  </div>
