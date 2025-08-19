@@ -23,7 +23,7 @@ export class NavBarComponent implements OnInit {
      this.items = [
       {
           label: 'Clientes',
-          icon: 'pi pi-receipt',
+          icon: 'pi pi-users',
           items: [
               {
                   label: 'Crear',
@@ -37,6 +37,26 @@ export class NavBarComponent implements OnInit {
                   icon: 'pi pi-list',
                   command: () => {
                     this.router.navigate(["/clientes/"]);
+                  }
+              },
+          ]
+      },
+      {
+          label: 'Dolls',
+          icon: 'pi pi-heart-fill',
+          items: [
+              {
+                  label: 'Crear',
+                  icon: 'pi pi-plus-circle',
+                  command: () => {
+                    this.router.navigate(["/dolls/create"]);
+                  }
+              },
+              {
+                  label: 'Listar',
+                  icon: 'pi pi-list',
+                  command: () => {
+                    this.router.navigate(["/dolls/"]);
                   }
               },
           ]
