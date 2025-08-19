@@ -61,4 +61,13 @@ export class DollService {
     return this.http.delete<any>(`${url}/${id}`, this.httpOptions)
       .pipe(catchError(this.errorHandler.handleError));
   }
+
+  cambiarEstado(product: any)
+  {
+    let url = this.basePath;
+
+    return this.http.put<any>(`${url}/cambiar-estado/${product.id}`, product, this.httpOptions)
+      .pipe(catchError(this.errorHandler.handleError));
+  }
+
 }

@@ -95,4 +95,39 @@ export class DollListComponent implements OnInit {
         }
       });
   }
+
+  dialogCambiarEstado(doll: any, event: Event)
+  {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: `Quiere ${(doll.estado ? "Inactivar" : "Activar")} la Doll: 
+        <br><br><b>${doll.nombre}</b>?`,
+      header: 'Cambiar Estado',
+      icon: 'pi pi-info-circle',
+      acceptButtonStyleClass:"p-button-danger p-button-text",
+      rejectButtonStyleClass:"p-button-text p-button-text",
+      acceptIcon:"none",
+      rejectIcon:"none",
+
+      accept: () => {
+          this.cambiarEstado(doll);
+      },
+      reject: () => { }
+    });
+  }
+
+  cambiarEstado(doll: any)
+  {
+    this.dollService.cambiarEstado(doll)
+      .subscribe({
+        next: (response) => {
+          this.messageService.add({ severity: 'info', summary: 'Confirmado', detail: response.body });
+          this.ngOnInit();
+        },
+        error: (error) => {
+          if (error.hasOwnProperty("error") && error.error.hasOwnProperty("message"))
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message });
+        }
+      });
+  }
 }

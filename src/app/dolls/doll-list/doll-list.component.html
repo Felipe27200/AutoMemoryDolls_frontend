@@ -77,6 +77,13 @@
                           size="small"
                           (onClick)="dialogEliminar(doll, $event)" 
                       />
+                      <p-button 
+                          [severity]="((doll.estado) ? 'success' : 'warn')" 
+                          styleClass="h-7 !w-9 !mr-1 !mb-1"
+                          icon="pi pi-sync"
+                          size="small"
+                          (onClick)="dialogCambiarEstado(doll, $event)" 
+                      />
                     </td>
                 </tr>
             </ng-template>
