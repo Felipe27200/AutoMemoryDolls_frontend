@@ -4,6 +4,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cliente-form',
@@ -21,6 +22,8 @@ export class ClienteFormComponent {
 
   @Output() eventEmitter = new EventEmitter();
   errors: any[] = [];
+
+  private router: Router = inject(Router)
 
   private fb: FormBuilder = inject(FormBuilder)
 
@@ -68,6 +71,11 @@ export class ClienteFormComponent {
     this.clienteForm.controls.nombre.setValue(this.cliente.nombre);
     this.clienteForm.controls.ciudad.setValue(this.cliente.ciudad);
     this.clienteForm.controls.infoContacto.setValue(this.cliente.infoContacto);
+  }
+
+  regresarClientes()
+  {
+    this.router.navigate(['/clientes'])
   }
 
   get nombre() { return this.clienteForm.get('nombre'); }

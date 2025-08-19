@@ -29,4 +29,28 @@ export class ClienteService {
     return this.http.post<any>(url, product, this.httpOptions)
       .pipe(catchError(this.errorHandler.handleError));
   }
+
+  updateCliente(product: any, id: number)
+  {
+    let url = this.basePath + "/" + (+id);
+
+    return this.http.put<any>(url, product, this.httpOptions)
+      .pipe(catchError(this.errorHandler.handleError));
+  }
+
+  getAll()
+  {
+    let url = this.basePath + "/";
+
+    return this.http.get<any>(url, this.httpOptions)
+      .pipe(catchError(this.errorHandler.handleError));
+  }
+
+  getById(id: number)
+  {
+    let url = this.basePath;
+
+    return this.http.get<any>(`${url}/${id}`, this.httpOptions)
+      .pipe(catchError(this.errorHandler.handleError));
+  }
 }

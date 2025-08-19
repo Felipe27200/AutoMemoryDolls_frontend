@@ -32,6 +32,13 @@ export class NavBarComponent implements OnInit {
                     this.router.navigate(["/clientes/create"]);
                   }
               },
+              {
+                  label: 'Listar',
+                  icon: 'pi pi-list',
+                  command: () => {
+                    this.router.navigate(["/clientes/"]);
+                  }
+              },
           ]
       },
     ];
