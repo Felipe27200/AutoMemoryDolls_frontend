@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
   templateUrl: './doll-form.component.html',
   styleUrl: './doll-form.component.css'
 })
-export class DollFormComponent {
+export class DollFormComponent implements OnChanges {
   @Input() titulo: string = '';
   @Input() doll: any;
 
@@ -70,7 +70,7 @@ export class DollFormComponent {
     this.doll = changes["doll"].currentValue;
 
     this.dollForm.controls.nombre.setValue(this.doll.nombre);
-    this.dollForm.controls.edad.setValue(this.doll.ciudad);
+    this.dollForm.controls.edad.setValue(this.doll.edad);
   }
 
   regresarDolls()
