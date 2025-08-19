@@ -63,38 +63,37 @@ export class ClienteListComponent implements OnInit {
     this.router.navigate(['/clientes', +id!]);
   }
 
-  // dialogChangeState(cliente: any, event: Event)
-  // {
-  //   this.confirmationService.confirm({
-  //     target: event.target as EventTarget,
-  //     message: `Do you want to ${(cliente.active ? "Inactive" : "Active")} the Cliente: 
-  //       <br><br><b>${cliente.name}</b>?`,
-  //     header: 'Change State',
-  //     icon: 'pi pi-info-circle',
-  //     acceptButtonStyleClass:"p-button-danger p-button-text",
-  //     rejectButtonStyleClass:"p-button-text p-button-text",
-  //     acceptIcon:"none",
-  //     rejectIcon:"none",
+  dialogEliminar(cliente: any, event: Event)
+  {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: `Quiere eliminar a ${cliente.nombre} como Cliente?`,
+      header: 'Eliminar Cliente',
+      icon: 'pi pi-info-circle',
+      acceptButtonStyleClass:"p-button-danger p-button-text",
+      rejectButtonStyleClass:"p-button-text p-button-text",
+      acceptIcon:"none",
+      rejectIcon:"none",
 
-  //     accept: () => {
-  //         this.changeState(cliente);
-  //     },
-  //     reject: () => { }
-  //   });
-  // }
+      accept: () => {
+          this.eliminarCliente(cliente);
+      },
+      reject: () => { }
+    });
+  }
 
-  // changeState(cliente: any)
-  // {
-  //   this.clienteService.changeState(cliente)
-  //     .subscribe({
-  //       next: (response) => {
-  //         this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: response.body });
-  //         this.ngOnInit();
-  //       },
-  //       error: (error) => {
-  //         if (error.hasOwnProperty("error") && error.error.hasOwnProperty("message"))
-  //           this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message });
-  //       }
-  //     });
-  // }
+  eliminarCliente(cliente: any)
+  {
+    this.clienteService.deleteById(cliente.id)
+      .subscribe({
+        next: (response) => {
+          this.messageService.add({ severity: 'info', summary: 'Eliminado', detail: response.body });
+          this.ngOnInit();
+        },
+        error: (error) => {
+          if (error.hasOwnProperty("error") && error.error.hasOwnProperty("message"))
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message });
+        }
+      });
+  }
 }

@@ -22,19 +22,19 @@ export class ClienteService {
   
   constructor() { }
 
-  createCliente(product: any)
+  createCliente(Cliente: any)
   {
     let url = this.basePath + "/";
 
-    return this.http.post<any>(url, product, this.httpOptions)
+    return this.http.post<any>(url, Cliente, this.httpOptions)
       .pipe(catchError(this.errorHandler.handleError));
   }
 
-  updateCliente(product: any, id: number)
+  updateCliente(Cliente: any, id: number)
   {
     let url = this.basePath + "/" + (+id);
 
-    return this.http.put<any>(url, product, this.httpOptions)
+    return this.http.put<any>(url, Cliente, this.httpOptions)
       .pipe(catchError(this.errorHandler.handleError));
   }
 
@@ -51,6 +51,14 @@ export class ClienteService {
     let url = this.basePath;
 
     return this.http.get<any>(`${url}/${id}`, this.httpOptions)
+      .pipe(catchError(this.errorHandler.handleError));
+  }
+
+  deleteById(id: number)
+  {
+    let url = this.basePath;
+
+    return this.http.delete<any>(`${url}/${id}`, this.httpOptions)
       .pipe(catchError(this.errorHandler.handleError));
   }
 }

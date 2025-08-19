@@ -70,13 +70,13 @@
                         styleClass="h-7 !w-9 !mr-1 !mb-1"
                         size="small"
                       />
-                      <!-- <p-button 
-                          [severity]="((cliente.active) ? 'success' : 'danger')" 
+                      <p-button 
+                          severity="danger" 
                           styleClass="h-7 !w-9 !mr-1 !mb-1"
-                          icon="pi pi-sync"
+                          icon="pi pi-trash"
                           size="small"
-                          (onClick)="dialogChangeState(cliente, $event)" 
-                      /> -->
+                          (onClick)="dialogEliminar(cliente, $event)" 
+                      />
                     </td>
                 </tr>
             </ng-template>
