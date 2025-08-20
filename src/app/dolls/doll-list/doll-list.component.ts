@@ -62,6 +62,11 @@ export class DollListComponent implements OnInit {
     this.router.navigate(['/dolls', +id!]);
   }
 
+  verCartas(id: string | number)
+  {
+    this.router.navigate(['/cartas/cartas-doll', +id!]);
+  }
+
   dialogEliminar(doll: any, event: Event)
   {
     this.confirmationService.confirm({

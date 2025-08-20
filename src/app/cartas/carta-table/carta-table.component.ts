@@ -38,7 +38,8 @@ import { CommonResponseService } from '../../services/common-response.service';
 })
 export class CartaTableComponent implements OnChanges {
   private router: Router = inject(Router)
-
+  
+  @Input() entidad = '';
   @Input() cartas: any[] = [];
 
   ngOnChanges(changes: SimpleChanges): void {

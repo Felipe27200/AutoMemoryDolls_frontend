@@ -5,6 +5,7 @@ import { CartaCreateComponent } from "../cartas/carta-create/carta-create.compon
 import { CartaListComponent } from "../cartas/carta-list/carta-list.component";
 import { CartaUpdateComponent } from "../cartas/carta-update/carta-update.component";
 import { CartaClienteComponent } from "../cartas/carta-cliente/carta-cliente.component";
+import { CartaDollComponent } from "../cartas/carta-doll/carta-doll.component";
 
 export const CARTA_ROUTES: Routes = [
     {
@@ -13,6 +14,7 @@ export const CARTA_ROUTES: Routes = [
         children: [
             { path: 'create', component: CartaCreateComponent },
             { path: 'cartas-cliente/:id', component: CartaClienteComponent },
+            { path: 'cartas-doll/:id', component: CartaDollComponent },
             { path: ':id', component: CartaUpdateComponent },
             { path: '', component: CartaListComponent },
         ]        
