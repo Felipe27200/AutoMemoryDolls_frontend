@@ -32,7 +32,8 @@ import { CommonResponseService } from '../../services/common-response.service';
   providers: [
     ConfirmationService,
     MessageService
-  ],    templateUrl: './carta-list.component.html',
+  ],    
+  templateUrl: './carta-list.component.html',
   styleUrl: './carta-list.component.css'
 })
 export class CartaListComponent {

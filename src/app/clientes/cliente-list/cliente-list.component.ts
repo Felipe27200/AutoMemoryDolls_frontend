@@ -82,6 +82,11 @@ export class ClienteListComponent implements OnInit {
     });
   }
 
+  verCartas(id: string | number)
+  {
+    this.router.navigate(['/cartas/cartas-cliente', +id!]);
+  }
+
   eliminarCliente(cliente: any)
   {
     this.clienteService.deleteById(cliente.id)

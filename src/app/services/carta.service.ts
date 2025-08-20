@@ -54,6 +54,14 @@ export class CartaService {
       .pipe(catchError(this.errorHandler.handleError));
   }
 
+  getByClienteId(id: number)
+  {
+    let url = this.basePath;
+
+    return this.http.get<any>(`${url}/cartas-cliente/${id}`, this.httpOptions)
+      .pipe(catchError(this.errorHandler.handleError));
+  }
+
   deleteById(id: number)
   {
     let url = this.basePath;
