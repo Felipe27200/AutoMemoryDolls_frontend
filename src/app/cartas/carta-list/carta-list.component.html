@@ -18,7 +18,7 @@
           styleClass="w-full"
           sortMode="multiple"
           [tableStyle]="{'width': '100%'}"
-          [globalFilterFields]="['nombre', 'ciudad', 'infoContacto']"
+          [globalFilterFields]="['nombre', 'cliente.nombre', 'autoMemoryDolls.nombre', 'cartaEstado.nombre']"
           [scrollable]="true"
           size="small"
           scrollHeight="700px"
@@ -78,13 +78,17 @@
                         styleClass="h-7 !w-9 !mr-1 !mb-1"
                         size="small"
                       />
-                      <p-button 
-                          severity="danger" 
-                          styleClass="h-7 !w-9 !mr-1 !mb-1"
-                          icon="pi pi-trash"
-                          size="small"
-                          (onClick)="dialogEliminar(carta, $event)" 
-                      />
+
+                      @if (carta.cartaEstado.nombre == 'borrador')
+                      {
+                          <p-button 
+                              severity="danger" 
+                              styleClass="h-7 !w-9 !mr-1 !mb-1"
+                              icon="pi pi-trash"
+                              size="small"
+                              (onClick)="dialogEliminar(carta, $event)" 
+                          />
+                      }
                     </td>
                 </tr>
             </ng-template>

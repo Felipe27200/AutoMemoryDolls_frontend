@@ -66,7 +66,7 @@ export class CartaListComponent {
   {
     this.confirmationService.confirm({
       target: event.target as EventTarget,
-      message: `Quiere eliminar a ${carta.nombre} como Carta?`,
+      message: `Quiere eliminar la Carta?`,
       header: 'Eliminar Carta',
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass:"p-button-danger p-button-text",

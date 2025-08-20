@@ -32,7 +32,7 @@ export class CartaFormComponent implements OnInit, OnChanges {
   errors: any[] = [];
 
   clientes!: any[];
-  dolls!: any[];
+  dolls: any[] = [];
   cartaEstados!: any[];
 
   private router: Router = inject(Router);
@@ -115,9 +115,11 @@ export class CartaFormComponent implements OnInit, OnChanges {
 
     this.cartaForm.controls.motivo.setValue(this.carta.motivo);
     this.cartaForm.controls.contenido.setValue(this.carta.contenido);
-    this.cartaForm.controls.autoMemoryDollId.setValue(this.carta.autoMemoryDollId);
-    this.cartaForm.controls.clienteId.setValue(this.carta.clienteId);
-    this.cartaForm.controls.cartaEstadoId.setValue(this.carta.cartaEstadoId);
+    this.cartaForm.controls.autoMemoryDollId.setValue(this.carta.autoMemoryDolls.id);
+    this.cartaForm.controls.clienteId.setValue(this.carta.cliente.id);
+    this.cartaForm.controls.cartaEstadoId.setValue(this.carta.cartaEstado.id);
+
+    this.dolls.push(this.carta.autoMemoryDolls);
   }
 
   regresarCartas()
