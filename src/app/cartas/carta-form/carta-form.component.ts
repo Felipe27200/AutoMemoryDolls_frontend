@@ -67,6 +67,8 @@ export class CartaFormComponent implements OnInit, OnChanges {
     if (this.cartaEstadoId == null || this.cartaEstadoId.value == null || this.cartaEstadoId.value == undefined)
       this.errors.push("El estado es requerido");
 
+    console.log(this.cartaEstadoId?.value)
+
     if (this.errors.length > 0)
       return;
 
@@ -131,6 +133,6 @@ export class CartaFormComponent implements OnInit, OnChanges {
   get contenido() { return this.cartaForm.get('contenido'); }
   get autoMemoryDollId() { return this.cartaForm.get('autoMemoryDollId'); }
   get clienteId() { return this.cartaForm.get('clienteId'); }
-  get cartaEstadoId() { return this.cartaForm.get('autoMemoryDollId'); }
+  get cartaEstadoId() { return this.cartaForm.get('cartaEstadoId'); }
 
 }
